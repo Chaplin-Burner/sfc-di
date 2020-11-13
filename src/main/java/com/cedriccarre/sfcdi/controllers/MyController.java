@@ -1,5 +1,6 @@
 package com.cedriccarre.sfcdi.controllers;
 
+import com.cedriccarre.sfcdi.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -9,10 +10,15 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MyController {
 
-    public String sayHello(){
-        System.out.println("hello world!!");
+    private final GreetingService greetingService;
 
-        return "Hi folks!";
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello(){
+
+        return greetingService.sayGreeting();
     }
 
 }
