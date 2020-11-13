@@ -1,9 +1,6 @@
 package com.cedriccarre.sfcdi;
 
-import com.cedriccarre.sfcdi.controllers.ConstructorInjectedController;
-import com.cedriccarre.sfcdi.controllers.MyController;
-import com.cedriccarre.sfcdi.controllers.PropertyInjectedController;
-import com.cedriccarre.sfcdi.controllers.SetterInjectedController;
+import com.cedriccarre.sfcdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -17,6 +14,9 @@ public class SfcDiApplication {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(SfcDiApplication.class, args);
+
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.sayHello());
 
         MyController myController = (MyController) ctx.getBean("myController");
 
